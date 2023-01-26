@@ -1,9 +1,6 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<head>
-  <meta http-equiv="refresh" content="3">
-</head>
     <main class="profile-page layout layout--2">
       <div class="container">
         <!-- Room Start -->
@@ -149,6 +146,23 @@
         <!--  End -->
       </div>
     </main>
+    <script>
+  // Set up an event listener for message events
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+    // Check that the message is coming from the correct origin
+    if (event.origin !== "{% url 'room'%}") {
+        return;
+    }
+
+    // Handle the message data
+    var data = event.data;
+    if(data === "refresh"){
+        location.reload();
+    }
+}
+    </script>
     <script src="script.js"></script>
 
 {% endblock content %}
