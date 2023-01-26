@@ -152,7 +152,7 @@ window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
     // Check that the message is coming from the correct origin
-    if (event.origin !== "{% url 'room' %}") {
+    if (event.origin !== "{% url 'room' room.id %}") {
         return;
     }
 
